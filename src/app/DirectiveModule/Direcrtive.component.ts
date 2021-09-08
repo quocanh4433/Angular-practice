@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-directive',
-    template: `<section class="container py-5">
-        <h1 class="text-warning">CHAPTER 2: Directive</h1><hr>
-
+    template: `
+    <section class="container py-5">
+        <h1 class="text-warning">CHAPTER 3: Directive - tương tự như ptopery trên thẻ HTML</h1><hr>
         <!-- SectionI -->
         <section class="sectionI">
             <h2 class="text-success">I. Structural Directive</h2>
@@ -39,7 +39,7 @@ import { Component, OnInit } from '@angular/core';
             <hr>
             <!-- sectionI - 02 -->
             <section>
-                <h3>02. *ngSwitchCase - Kiểm tra các trường hợp để hiển thị trên giao diện</h3>
+                <h3>#02. *ngSwitchCase - Kiểm tra các trường hợp để hiển thị trên giao diện</h3>
                 <div class="d-flex align-items-center">
                     <select class="form-control w-25 mr-3" [(ngModel)]="color">
                         <option value="red">Red</option>
@@ -56,7 +56,7 @@ import { Component, OnInit } from '@angular/core';
             <hr>
             <!-- sectionI - 03 -->
             <section>
-                <h3>03. *ngFor - Thêm thuộc tính index</h3>
+                <h3>#03. *ngFor - Thêm thuộc tính index</h3>
                 <div class="row">
                     <div class="col-4" *ngFor="let user of arrUser; let index = index">
                         <div class="card rounded">
@@ -71,8 +71,71 @@ import { Component, OnInit } from '@angular/core';
                     </div>
                 </div>
             </section>
+            <hr>
+            <!-- sectionI - 04-->
+            <section>
+                <h3>#04. *ngContent - chèn nội dung vào giữa 2 thẻ component</h3>
+                <app-demo-ngcontent>
+                    <a class="sign">Content được chèn vào</a>
+                    <img class="logo rounded-circle" src="https://picsum.photos/50/50" alt="">
+                </app-demo-ngcontent>
+            </section>
+            <hr>
+            <!-- sectionI - 05-->
+            <section>
+                <h3>#05. *ngClass - kiểm tra điều kiện để chèn class</h3>
+                <h4 class="ml-4">## Eg01: thay đổi màu chữ và fontsize theo điều kiện</h4>
+                <p class="mb-4" [ngClass]="{'mauChu': mauChu, 'fontChu': fontChu}">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nam, magnam!</p>
+                <h4 class="ml-4">## Eg02: thay đổi background-color theo hàng chẵn</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Avatar</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr [ngClass]="{'alert alert-warning' : index%2 == 0}" *ngFor="let user of arrUser; let index = index">
+                            <td><img src="{{user.avatar}}" width="50" height="50" class="rounded-circle" alt="..."></td>
+                            <td>{{user.userName}}</td>
+                            <td>{{user.password}}</td>
+                            <td>{{user.email}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+            <!-- sectionI - 06-->
+            <section>
+                <h3>#06. *ngStyle - can thiệp đến property style trên thẻ HTML</h3>
+                <h4 class="ml-4">## Eg01: thay đổi backgroung-image theo điều kiện</h4>
+                <p [ngStyle]="{'background-image': backgroundImage}" class="bg">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Harum amet et magni minus nihil aut facere magnam, aliquam consectetur eum.</p>
+                <h4 class="ml-4 mt-4">## Eg02: thay đổi fontsize khi click vào button</h4>
+                <div class="text-primary"[ngStyle]="{'font-size': fontSize+'px'}" >Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Harum amet et magni minus nihil aut facere magnam, aliquam consectetur eum.</div>
+                <div class="form-group">
+                    <button class="btn btn-success " (click)="changeFontSize(true)">+</button>
+                    <button class="btn btn-warning ml-2" (click)="changeFontSize(false)">-</button>
+                </div>
+            </section>
         </section>
-        
+        <hr>
+        <!-- sectionII - Thực hành -->
+        <section>
+            <h2 class="text-success">II. Thực hành</h2>
+            <!-- sectionII - 01 -->
+            <section>
+                <h3>#01. Lấy thông tin từ form đăng nhập và thay đổi trên giao diện</h3>
+                <app-form></app-form>
+            </section>
+            <!-- sectionII - 02 -->
+            <section>
+                <h3>#02. Quản lý sản phẩm</h3>
+                <app-quanlysanpham></app-quanlysanpham>
+            </section>
+        </section>
     </section>
     `,
     styleUrls: ['./Directive.component.scss']
@@ -80,28 +143,42 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class DirectiveComponent implements OnInit {
-    arrUser:User[] = [
-        {userName:'sideptrai',password:'12/12/2000',email:'si3d@gmail.com',avatar:'https://i.pravatar.cc?u=si'},
-        {userName:'khai',password:'123456',email:'khai@gmail.com',avatar:'https://i.pravatar.cc?u=khai'},
-        {userName:'luandeptrai',password:'21/12/2000',email:'luan3d@gmail.com',avatar:'https://i.pravatar.cc?u=luan'},
+    arrUser: User[] = [
+        { userName: 'sideptrai', password: '12/12/2000', email: 'si3d@gmail.com', avatar: 'https://i.pravatar.cc?u=si' },
+        { userName: 'khai', password: '123456', email: 'khai@gmail.com', avatar: 'https://i.pravatar.cc?u=khai' },
+        { userName: 'luandeptrai', password: '21/12/2000', email: 'luan3d@gmail.com', avatar: 'https://i.pravatar.cc?u=luan' },
     ]
-    color:string = "red";
-    number:number = 5;
-    userName:string = "Bootcamp08E";
-    isLogin:boolean = false;
+    color: string = "red";
+    number: number = 5;
+    userName: string = "Bootcamp08E";
+    isLogin: boolean = false;
 
-    login () {
+    mauChu: boolean = true;
+    fontChu: boolean = true;
+
+    backgroundImage: string = 'url("https://picsum.photos/1000/1000")';
+
+    fontSize:number = 24;
+
+    login() {
         this.isLogin = true
     }
 
+    changeFontSize (tangGiam:boolean) {
+        if(tangGiam) {
+            this.fontSize +=  2
+        } else {
+            this.fontSize -= 2
+        }
+    }
     constructor() { }
 
     ngOnInit() { }
 }
 
-interface User{
-    userName:string
-    password:string
-    email:string
-    avatar:string
+interface User {
+    userName: string
+    password: string
+    email: string
+    avatar: string
 }

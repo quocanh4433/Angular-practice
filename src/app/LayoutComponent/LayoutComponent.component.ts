@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-layout-component',
-    template: `<section class="container">
-        <h1 class="text-warning">CHAPTER 3: Component</h1><hr>
+    template: `<section class="container py-5">
+        <h1 class="text-warning">CHAPTER 1: Component</h1><hr>
         <app-layout-header></app-layout-header>
         <div class="body">
             <div class="sidebar">

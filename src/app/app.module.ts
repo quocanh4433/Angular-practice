@@ -1,3 +1,4 @@
+import { PropModule } from './PropModule/Prop.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
@@ -13,7 +14,8 @@ import { LayoutModule } from './LayoutComponent/LayoutComponent.module';
     BrowserModule,
     DataBindingModule,
     DirectiveModule,
-    LayoutModule
+    LayoutModule,
+    PropModule
   ],
   providers: [], // Nới khai báo có sẻvice
   bootstrap: [AppComponent] // Nới khai báo chạy trên index component <app-root></app-rooot>

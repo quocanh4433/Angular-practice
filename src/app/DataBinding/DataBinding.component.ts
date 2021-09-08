@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
     selector: 'app-databinding',
     template: `<section class="container py-5">
-        <h1 class="text-warning">CHAPTER 1: DATABINDING</h1><hr>
+        <h1 class="text-warning">CHAPTER 2: Databinding</h1><hr>
         <!-- SectionI -->
         <section class="sectionI mb-5">
             <h2 class="text-success">I. Onway binding</h2>
@@ -16,7 +16,7 @@ import { Component, OnInit } from '@angular/core';
             <hr>
             <!-- sectionI - 02  -->
             <section>
-                <h3>#02. Property Binding (binding vaof thuộc tính của thẻ thông qua [ ] - thường dùng cho thẻ input)</h3>
+                <h3>#02. Property Binding (binding vao thuộc tính của thẻ thông qua [ ] - thường dùng cho thẻ input)</h3>
                 <p [innerHTML]="'Dữ liệu được Biding:' + '' + title"></p>
                 <input class="form-control w-25" [value]="title">
             </section>
@@ -92,7 +92,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class DatabindingComponent implements OnInit {
     // Dữ liệu muốn hiển thị trên giao diện phai là thuộc tính của compoent
-    title: string = "Bootcamp08E"
+    title:string = "Bootcamp08E"
     arrProduct: Product[] = [
         { id: "1", name: "iPhone", price: 1200, quantity: 10, img: "https://picsum.photos/id/1/200/200" },
         { id: "2", name: "iPhoneX", price: 1400, quantity: 20, img: "https://picsum.photos/id/2/200/200" },
