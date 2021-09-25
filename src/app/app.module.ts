@@ -17,12 +17,14 @@ import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { FormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DirectiveUIModule } from './Demo/DirectiveUI/DirecttiveUI.module';
 
 //Khai báo routing
 import { Routes, RouterModule } from "@angular/router"
+import { DemoFormModule } from './Demo/Form/DemoForm.module';
+import { HeaderInterceptor } from './_core/Guards/Author.interceptor';
 
 let appRoutes: Routes = [
   {path: "home", loadChildren: () => HomeModule},
@@ -49,13 +51,23 @@ registerLocaleData(en);
     LayoutModule,
     PropModule,
     FormsModule,
+    DemoFormModule,
     HttpClientModule,
     BrowserAnimationsModule,
     DirectiveUIModule,
+
     RouterModule.forRoot(appRoutes),
+
+
     HttpClientModule, // Module giúp gọi API
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }], // Nới khai báo có sẻvice
+  providers: [
+    { provide: NZ_I18N, useValue: en_US }, 
+
+    { provide: HTTP_INTERCEPTORS, useClass: HeaderInterceptor, multi: true }
+
+
+  ], // Nới khai báo có sẻvice
   bootstrap: [AppComponent] // Nới khai báo chạy trên index component <app-root></app-rooot>
 })
 export class AppModule { }

@@ -13,6 +13,7 @@ import { DatabindingComponent } from 'src/app/Demo/DataBinding/DataBinding.compo
 import { DirectiveComponent } from 'src/app/Demo/DirectiveModule/Direcrtive.component';
 import { LayoutComponent } from 'src/app/Demo/LayoutComponent/LayoutComponent.component';
 import { DirectiveUIComponent } from 'src/app/Demo/DirectiveUI/DirectiveUI.component';
+import { DemoFormComponent } from 'src/app/Demo/Form/DemoForm.component';
 
 // Định nghĩa trang mặc định hiển thị
 const homeRoutes:Routes = [
@@ -25,6 +26,7 @@ const homeRoutes:Routes = [
         {path: "propmodule01", component: ProductListComponent},
         {path: "propmodule02", component: ViewChildComponent},
         {path: "directiveui", component: DirectiveUIComponent},
+        {path: "demoform", component: DemoFormComponent},
 
         {path: "detail/:id", component: DetailComponent},
         {path: "detail", component: DetailComponent},

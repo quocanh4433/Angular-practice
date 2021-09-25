@@ -31,6 +31,9 @@ import { Component, OnInit } from '@angular/core';
                         <a class="nav-link" routerLink="/directiveui">06. DirectiveUI</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" routerLink="/demoform">07. Form Validation</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" routerLink="/user/register">Register-Page</a>
                     </li>
                     <li class="nav-item">

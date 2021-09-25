@@ -28,6 +28,7 @@ import { Component, OnInit } from '@angular/core';
                     <div class="form-group">
                         <p>Nhập số</p>
                         <input class="form-control w-50" [(ngModel)]="number" />
+                        
                     </div>
                     <div class="alert alert-primary">
                         <h6>Kết Quả:</h6>
